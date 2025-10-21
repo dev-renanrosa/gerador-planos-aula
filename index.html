@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador Automático de Planos de Aula</title>
+  <style>
+    body { font-family: Arial; margin: 40px; background: #f5f5f5; }
+    h1 { color: #333; }
+    form { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 8px #ccc; }
+    input, textarea { width: 100%; margin: 8px 0; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+    button { background: #007bff; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+    button:hover { background: #0056b3; }
+    .plano { background: #fff; margin-top: 20px; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px #ccc; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <h1>Gerador Automático de Planos de Aula</h1>
+
+  <form id="formPlano">
+    <label>Tema</label>
+    <input type="text" id="tema" required />
+
+    <label>Faixa Etária</label>
+    <input type="text" id="faixa_etaria" required />
+
+    <label>Disciplina</label>
+    <input type="text" id="disciplina" required />
+
+    <label>Duração</label>
+    <input type="text" id="duracao" required />
+
+    <label>Nível de Dificuldade</label>
+    <input type="text" id="nivel_dificuldade" required />
+
+    <label>Observações</label>
+    <textarea id="observacoes"></textarea>
+
+    <button type="submit" id="btnGerar">Gerar Plano</button>
+    <button type="button" id="btnVerPlanos" style="background:#28a745;">Ver Planos Salvos</button>
+
+
+    </form>
+
+    <div id="planos"></div>
+
+  <!-- ✅ Agora a função está dentro da tag <script> -->
+  <script>
+    // 🗑️ Excluir plano do Supabase
+    async function excluirPlano(id) {
+      if (!confirm("Tem certeza que deseja excluir este plano?")) return;
+
+      try {
+        const res = await fetch(`http://localhost:3000/api/planos/${id}`, {
+          method: "DELETE",
+        });
+
+        const data = await res.json();
+        alert(data.mensagem);
+        mostrarPlanos(); // Atualiza a lista automaticamente
+      } catch (err) {
+        console.error("❌ Erro ao excluir plano:", err);
+        alert("Erro ao excluir o plano.");
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+
+      }
+    }
+  </script>
+</body>
+</html>
